@@ -9,8 +9,9 @@ return {
 		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				automatic_enable = true,
+				automatic_enable = false,
 				ensure_installed = { 'lua_ls', 'ts_ls', 'clangd' },
+				opts = { auto_install = true },
 			})
 		end
 	},
