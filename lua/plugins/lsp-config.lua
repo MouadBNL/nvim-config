@@ -10,7 +10,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_enable = false,
-				ensure_installed = { "lua_ls", "ts_ls", "clangd", "volar" },
+				ensure_installed = { "lua_ls", "ts_ls", "clangd", "vue_ls" },
 				opts = { auto_install = true },
 			})
 		end,
@@ -19,12 +19,13 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local lspconfig = require("lspconfig")
+			-- local lspconfig = require("lspconfig")
 
 			-- local mason_registry = require("mason-registry")
 			-- local vuelsp = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language-server"
 
-			lspconfig.lua_ls.setup({
+			-- lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				settings = {
 					runtime = {
@@ -55,8 +56,9 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("lua_ls")
 
-			lspconfig.ts_ls.setup({
+			vim.lsp.config("ts_ls", {
 				capabilities = capabilities,
 				init_options = {
 					plugins = {
@@ -69,8 +71,9 @@ return {
 				},
 				filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact", "vue" },
 			})
+			vim.lsp.enable("ts_ls");
 
-			lspconfig.volar.setup({
+			vim.lsp.config("vue_ls", {
 				capabilities = capabilities,
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 				init_options = {
@@ -79,10 +82,13 @@ return {
 					},
 				},
 			})
+			vim.lsp.enable("vue_ls")
 
-			lspconfig.clangd.setup({
+			vim.lsp.config("clangd", {
 				capabilities = capabilities,
 			})
+			vim.lsp.enable("vue_ls")
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
