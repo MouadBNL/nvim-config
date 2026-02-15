@@ -87,7 +87,7 @@ return {
 			vim.lsp.config("clangd", {
 				capabilities = capabilities,
 			})
-			vim.lsp.enable("vue_ls")
+			vim.lsp.enable("clangd")
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
