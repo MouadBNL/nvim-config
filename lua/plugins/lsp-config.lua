@@ -10,7 +10,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_enable = false,
-				ensure_installed = { "lua_ls", "clangd", "ts_ls" },
+				ensure_installed = { "lua_ls", "clangd", "ts_ls", "zls" },
 				opts = { auto_install = true },
 			})
 		end,
@@ -88,6 +88,12 @@ return {
 				capabilities = capabilities,
 			})
 			vim.lsp.enable("clangd")
+
+
+			vim.lsp.config("zls", {
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("zls")
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
