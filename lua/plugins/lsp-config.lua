@@ -97,6 +97,13 @@ return {
 
 			vim.lsp.config("rust_analyzer", {
 				capabilities = capabilities,
+				settings = {
+					["rust-analyzer"] = {
+						check = {
+							command = "clippy",
+						},
+					},
+				},
 			})
 			vim.lsp.enable("rust_analyzer")
 
