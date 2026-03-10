@@ -13,7 +13,8 @@ return {
 	opts = {
 		-- fill any relevant options here
 	},
-	config = function()
+	config = function(_, opts)
+		require("neo-tree").setup(opts)
 		-- Setup NeoTree
 		vim.cmd("Neotree filesystem reveal right")
 		vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', {})
